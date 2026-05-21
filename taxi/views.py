@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import QuerySet
 from django.shortcuts import render
@@ -52,6 +53,7 @@ class DriverDetailView(LoginRequiredMixin, DetailView):
     template_name: str = "taxi/driver_detail.html"
 
 
+@login_required
 def index(request):
     """Render the home page with summary counts and visit counter."""
     num_drivers = Driver.objects.count()
